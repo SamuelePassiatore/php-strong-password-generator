@@ -9,6 +9,13 @@ $symbols = array("!", "?", "#", "$", "%", "&", "*", "-", "_");
 
 // Array merging
 $all_chars = array_merge($lower_chars, $upper_chars, $numbers, $symbols);
+
+// Generating random password
+$password = '';
+for ($i = 0; $i < $user_password_length; $i++) {
+    $random_chars = $all_chars[array_rand($all_chars)];
+    $password .= $random_chars;
+}
 ?>
 
 <!DOCTYPE html>
