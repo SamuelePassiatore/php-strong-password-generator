@@ -11,10 +11,14 @@ $user_password_length = $_GET['password-length'] ?? null;
 $password = '';
 
 // Control if on what should I print on the page
-if (!empty($user_password_length)) {
-    $password = random_password($user_password_length);
-    $_SESSION['password'] = $password;
-    header('Location: password.php');
+if (!empty($user_password_length) && is_numeric($user_password_length)) {
+    if ($user_password_length >= 1 && $user_password_length <= 20) {
+        $password = random_password($user_password_length);
+        $_SESSION['password'] = $password;
+        header('Location: password.php');
+    } else {
+        $password = 'Inserisci un numero compreso tra 1 e 20';
+    }
 } else {
     $password = 'Nessun parametro valido inserito';
 }
@@ -41,7 +45,7 @@ include './includes/head.php'
         <form action="#" method="GET" class="bg-white rounded-2 w-50 mx-auto p-4">
             <div class="mb-3 d-flex align-items-center">
                 <label for="password-length" class="form-label pe-5">Lunghezza password:</label>
-                <input type="number" id="password-length" name="password-length" min="1" max="20" class="w-25 form-control">
+                <input type="number" id="password-length" name="password-length" class="w-25 form-control">
             </div>
             <button type="submit" class="btn btn-primary">Invia</button>
             <a href="http://localhost/php-strong-password-generator" class="btn btn-secondary">Annulla</a>
