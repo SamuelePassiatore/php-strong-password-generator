@@ -24,11 +24,23 @@
 </head>
 
 <body class="blue-bg-custom">
-    <div class="container">
-        <div class="titles text-center">
+    <div class="container pt-5">
+        <div class="titles text-center pb-2">
             <h1 class="light-blue-custom">Strong Password Generator</h1>
             <h2 class="text-white">Genera una password sicura</h2>
         </div>
+        <div class="alert bg-white rounded-2 w-50 mx-auto py-4">
+
+        </div>
+        <form action="#" method="POST" class="bg-white rounded-2 w-50 mx-auto p-4">
+            <div class="mb-3">
+                <label for="password-length" class="pe-5">Lunghezza password:</label>
+                <input type="number" id="password-length" name="password-length" min="1" max="20" class="w-25">
+            </div>
+            <button type="submit" class="btn btn-primary">Invia</button>
+            <button type="reset" class="btn btn-secondary">Annulla</button>
+        </form>
+
     </div>
 </body>
 
