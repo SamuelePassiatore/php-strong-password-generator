@@ -2,6 +2,9 @@
 // Include function
 include './includes/functions.php';
 
+// Start session
+session_start();
+
 // Retrieving the length set by the user
 $user_password_length = $_GET['password-length'] ?? null;
 // Password I need to return to the user
@@ -10,6 +13,8 @@ $password = '';
 // Control if on what should I print on the page
 if (!empty($user_password_length)) {
     $password = random_password($user_password_length);
+    $_SESSION['password'] = $password;
+    header('Location: password.php');
 } else {
     $password = 'Nessun parametro valido inserito';
 }
@@ -34,6 +39,10 @@ if (!empty($user_password_length)) {
         .light-blue-custom {
             color: #808A98;
         }
+
+        .alert {
+            background-color: #CFF4FC;
+        }
     </style>
 </head>
 
@@ -43,7 +52,7 @@ if (!empty($user_password_length)) {
             <h1 class="light-blue-custom">Strong Password Generator</h1>
             <h2 class="text-white">Genera una password sicura</h2>
         </div>
-        <div class="alert bg-white rounded-2 w-50 mx-auto">
+        <div class="alert rounded-2 w-50 mx-auto">
             <p class="m-0"><?= $password; ?></p>
         </div>
         <form action="#" method="GET" class="bg-white rounded-2 w-50 mx-auto p-4">
