@@ -1,21 +1,39 @@
 <?php
-$user_password_length = $_GET['password-length'] ?? null;
 
-// Array of characters
-$lower_chars = array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
-$upper_chars = array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
-$numbers = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
-$symbols = array("!", "?", "#", "$", "%", "&", "*", "-", "_");
+// Function random password
+function random_password($user_password_length)
+{
+    // Array of characters
+    $lower_chars = array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
+    $upper_chars = array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
+    $numbers = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+    $symbols = array("!", "?", "#", "$", "%", "&", "*", "-", "_");
 
-// Array merging
-$all_chars = array_merge($lower_chars, $upper_chars, $numbers, $symbols);
+    // Array merging
+    $all_chars = array_merge($lower_chars, $upper_chars, $numbers, $symbols);
 
-// Generating random password
-$password = '';
-for ($i = 0; $i < $user_password_length; $i++) {
-    $random_chars = $all_chars[array_rand($all_chars)];
-    $password .= $random_chars;
+    // Generating random password
+    $password = '';
+    for ($i = 0; $i < $user_password_length; $i++) {
+        $random_chars = $all_chars[array_rand($all_chars)];
+        $password .= $random_chars;
+    }
+
+    return $password;
 }
+
+// Retrieving the length set by the user
+$user_password_length = $_GET['password-length'] ?? null;
+// Password I need to return to the user
+$password = '';
+
+// Control if on what should I print on the page
+if (!empty($user_password_length)) {
+    $password = random_password($user_password_length);
+} else {
+    $password = 'Nessun parametro valido inserito';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -45,8 +63,8 @@ for ($i = 0; $i < $user_password_length; $i++) {
             <h1 class="light-blue-custom">Strong Password Generator</h1>
             <h2 class="text-white">Genera una password sicura</h2>
         </div>
-        <div class="alert bg-white rounded-2 w-50 mx-auto py-4">
-
+        <div class="alert bg-white rounded-2 w-50 mx-auto">
+            <p class="m-0"><?= $password; ?></p>
         </div>
         <form action="#" method="GET" class="bg-white rounded-2 w-50 mx-auto p-4">
             <div class="mb-3 d-flex align-items-center">
@@ -54,7 +72,7 @@ for ($i = 0; $i < $user_password_length; $i++) {
                 <input type="number" id="password-length" name="password-length" min="1" max="20" class="w-25 form-control">
             </div>
             <button type="submit" class="btn btn-primary">Invia</button>
-            <button type="reset" class="btn btn-secondary">Annulla</button>
+            <a href="http://localhost/php-strong-password-generator" class="btn btn-secondary">Annulla</a>
         </form>
 
     </div>
