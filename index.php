@@ -1,4 +1,5 @@
 <?php
+$user_password_length = $_GET['password-length'] ?? null;
 
 ?>
 
@@ -32,10 +33,10 @@
         <div class="alert bg-white rounded-2 w-50 mx-auto py-4">
 
         </div>
-        <form action="#" method="POST" class="bg-white rounded-2 w-50 mx-auto p-4">
-            <div class="mb-3">
-                <label for="password-length" class="pe-5">Lunghezza password:</label>
-                <input type="number" id="password-length" name="password-length" min="1" max="20" class="w-25">
+        <form action="#" method="GET" class="bg-white rounded-2 w-50 mx-auto p-4">
+            <div class="mb-3 d-flex align-items-center">
+                <label for="password-length" class="form-label pe-5">Lunghezza password:</label>
+                <input type="number" id="password-length" name="password-length" min="1" max="20" class="w-25 form-control">
             </div>
             <button type="submit" class="btn btn-primary">Invia</button>
             <button type="reset" class="btn btn-secondary">Annulla</button>
