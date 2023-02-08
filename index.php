@@ -63,7 +63,6 @@ if (!empty($user_password_length)) {
             <button type="submit" class="btn btn-primary">Invia</button>
             <a href="http://localhost/php-strong-password-generator" class="btn btn-secondary">Annulla</a>
         </form>
-
     </div>
 </body>
 

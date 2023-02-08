@@ -15,8 +15,11 @@ $password = $_SESSION['password'];
     <title>Password</title>
 </head>
 
-<body>
+<body class="container pt-3">
     <p class="fs-3"><strong>Password generata:</strong> <?= $password ?></p>
+    <form action="#" method="POST">
+        <a href="http://localhost/php-strong-password-generator" class="btn btn-secondary">Torna indietro</a>
+    </form>
 </body>
 
 </html>
