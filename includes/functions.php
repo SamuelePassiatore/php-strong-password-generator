@@ -1,6 +1,6 @@
 <?php
 // Function random password
-function random_password($user_password_length)
+function randomPassword($user_password_length)
 {
     // Array of characters
     $lower_chars = array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");

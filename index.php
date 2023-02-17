@@ -15,7 +15,7 @@ $alert_class = '';
 // Control if on what should I print on the page
 if (!empty($user_password_length) && is_numeric($user_password_length)) {
     if ($user_password_length >= 1 && $user_password_length <= 20) {
-        $password = random_password($user_password_length);
+        $password = randomPassword($user_password_length);
         $_SESSION['password'] = $password;
         header('Location: password.php');
     } else {
